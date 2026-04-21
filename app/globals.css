@@ -1,26 +1,74 @@
+/* app/globals.css */
 @import "tailwindcss";
 
+@theme {
+  --color-wexun-primary: #6C63FF;
+  --color-wexun-secondary: #FF6584;
+  --color-wexun-accent: #43E97B;
+  --color-wexun-dark: #0A0A1A;
+  --color-wexun-darker: #050510;
+
+  --font-sans: Inter, sans-serif;
+}
+@font-face {
+  font-family: vazir;
+  src: url("../public/fonts/vazir/vazirmatn-medium.woff2");
+}
+/* Light Mode */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --bg-gradient: linear-gradient(135deg, #e0e7ff 0%, #f0fdf4 50%, #fdf4ff 100%);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: vazir !important;
+}
+
+/* Dark Mode */
+.dark {
+  --bg-gradient: linear-gradient(135deg, #0A0A1A 0%, #0d0d2b 50%, #10001a 100%);
+}
+
+.bg-app {
+  background: var(--bg-gradient);
+}
+
+/* Glass effect */
+/* Glass effect حرفه‌ای‌تر و بلوری‌تر */
+.glass {
+  /* شفافیت کمتر برای دیده شدن بهتر افکت بلور */
+  background: rgba(255, 255, 255, 0.03); 
+  
+  /* افزایش شدت بلور */
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  
+  /* حاشیه نیمه‌شفاف برای لبه‌های شیشه */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* اضافه کردن دو لایه سایه: 
+     اولی (سایه بیرونی رنگی) 
+     دومی (سایه داخلی سفید برای رفلکس نور لبه شیشه) */
+  box-shadow: 
+    0 16px 40px rgba(108, 99, 255, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Glass for light mode (بروزرسانی شده) */
+.glass-light {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #6C63FF, #a78bfa, #FF6584);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
